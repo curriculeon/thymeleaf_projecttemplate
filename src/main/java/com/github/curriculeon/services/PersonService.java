@@ -2,7 +2,12 @@ package com.github.curriculeon.services;
 
 import com.github.curriculeon.repositories.PersonRepository;
 import com.github.curriculeon.models.Person;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
 public class PersonService {
     private PersonRepository repository;
 
@@ -11,7 +16,9 @@ public class PersonService {
     }
 
     public Iterable<Person> index() {
-        return repository.findAll();
+        List<Person> personList = new ArrayList<>();
+        repository.findAll().forEach(personList::add);
+        return personList;
     }
 
     public Person show(Long id) {

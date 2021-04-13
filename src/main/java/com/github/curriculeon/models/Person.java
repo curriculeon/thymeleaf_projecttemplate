@@ -1,6 +1,8 @@
 package com.github.curriculeon.models;
 
 
+import com.github.curriculeon.utils.Jsonifier;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +39,11 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return Jsonifier.jsonify(this);
     }
 
     @Override
